@@ -1,0 +1,11 @@
+services:
+  weather-listener:
+    image: nebulai/weather
+    container_name: weather
+    ports:
+      - "30000:30000"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.weather.rule=Host(`weather-api.home.flumpy.net`)
+      - traefik.docker.network=proxy
+      - traefik.http.routers.weather.tls=true
